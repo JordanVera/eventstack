@@ -4,12 +4,12 @@ import { Button } from "@repo/ui";
 import { UsersExample } from "../components/UsersExample";
 import { EventsExample } from "../components/EventsExample";
 
-import styles from "../styles/index.module.css";
+import  "../styles/global.css";
 
 export default function Web() {
   return (
-    <div className={styles.container}>
-      <h1>Event Stack - tRPC Demo</h1>
+    <div className="text-center">
+      <h1 className="text-blue-500">Event Stack - tRPC Demo</h1>
       <Button onClick={() => console.log("Pressed!")} text="Boop" />
       
       <div style={{ marginTop: '2rem' }}>

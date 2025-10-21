@@ -1,5 +1,31 @@
 ## Getting Started
 
+### Prerequisites
+
+**IMPORTANT:** Create a `.env.local` file in the `/apps/web` directory with the following variables:
+
+```env
+# Database - Update with your MySQL credentials
+DATABASE_URL="mysql://user:password@localhost:3306/event_stack"
+
+# NextAuth Configuration (REQUIRED for authentication to work)
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-key-here"
+```
+
+Generate a secure secret with: `openssl rand -base64 32`
+
+**Quick Setup:**
+
+```bash
+cd apps/web
+echo 'DATABASE_URL="mysql://user:password@localhost:3306/event_stack"' > .env.local
+echo 'NEXTAUTH_URL="http://localhost:3000"' >> .env.local
+echo "NEXTAUTH_SECRET=\"$(openssl rand -base64 32)\"" >> .env.local
+```
+
+### Running the Development Server
+
 First, run the development server:
 
 ```bash

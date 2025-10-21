@@ -1,6 +1,6 @@
 'use client';
 
-import { trpc } from '../lib/trpc-client';
+import { trpc } from '@/lib/trpc-client';
 
 export function UsersExample() {
   const { data: users, isLoading, error } = trpc.users.getAll.useQuery();

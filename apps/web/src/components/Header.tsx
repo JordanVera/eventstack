@@ -9,7 +9,7 @@ const Header = () => {
   const { data: session, status } = useSession();
 
   return (
-    <nav className="w-full bg-black text-white py-4 px-6">
+    <nav className="w-full bg-black text-white py-4 px-6 border-b border-white/10 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center gap-6">
           <Link href="/" className="text-xl font-bold hover:text-gray-300">

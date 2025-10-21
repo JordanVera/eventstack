@@ -199,7 +199,7 @@ export default function CreateEventPage() {
             <Button
               variant="ghost"
               onClick={() => setSummaryModalOpen(true)}
-              className="flex items-center gap-2 rounded-md px-4 py-2 text-white hover:bg-zinc-900"
+              className="flex cursor-pointer items-center gap-2 rounded-md px-4 py-2 text-white hover:bg-zinc-900 hover:text-white"
             >
               <Plus className="h-4 w-4" />
               Short Summary
@@ -207,7 +207,7 @@ export default function CreateEventPage() {
           </div>
 
           {/* Dates */}
-          <div className="mb-8 rounded-lg p-6">
+          <div className="mb-8 border-b border-b-zinc-800 py-6 pb-14">
             <div className="mb-4 flex items-center gap-2">
               <span className="text-white">📅 Dates</span>
             </div>
@@ -240,7 +240,7 @@ export default function CreateEventPage() {
               </div>
             </div>
 
-            <div className="mt-4 flex items-center justify-between rounded-lg bg-zinc-800 p-3">
+            <div className="mt-4 flex items-center justify-between rounded-lg bg-zinc-900 p-3">
               <div className="flex items-center gap-2">
                 <span className="text-sm text-white">🔁 Recurring Series</span>
               </div>
@@ -255,7 +255,7 @@ export default function CreateEventPage() {
           </div>
 
           {/* Event Details */}
-          <div className="mb-8 rounded-lg bg-zinc-900 p-6">
+          <div className="mb-8 rounded-lg py-6">
             <div className="mb-4 flex items-center gap-2">
               <span className="font-semibold text-white">📋 Event Details</span>
             </div>
@@ -264,7 +264,7 @@ export default function CreateEventPage() {
               <Button
                 variant="ghost"
                 onClick={() => setDescriptionModalOpen(true)}
-                className="w-full justify-start rounded-md px-4 py-3 text-white hover:bg-zinc-800"
+                className="w-full cursor-pointer justify-start rounded-md bg-zinc-900 p-6 text-white hover:bg-zinc-800 hover:text-white"
               >
                 <Edit className="mr-2 h-4 w-4" />
                 Add Description
@@ -272,7 +272,7 @@ export default function CreateEventPage() {
 
               <Button
                 variant="ghost"
-                className="w-full justify-start rounded-md px-4 py-3 text-white hover:bg-zinc-800"
+                className="w-full cursor-pointer justify-start rounded-md bg-zinc-900 p-6 text-white hover:bg-zinc-800 hover:text-white"
                 onClick={() => {}}
               >
                 <MapPin className="mr-2 h-4 w-4" />
@@ -289,7 +289,7 @@ export default function CreateEventPage() {
 
               <Button
                 variant="ghost"
-                className="w-full justify-start rounded-md px-4 py-3 text-white hover:bg-zinc-800"
+                className="w-full cursor-pointer justify-start rounded-md bg-zinc-900 p-6 text-white hover:bg-zinc-800 hover:text-white"
                 onClick={() => {}}
               >
                 <Globe className="mr-2 h-4 w-4" />

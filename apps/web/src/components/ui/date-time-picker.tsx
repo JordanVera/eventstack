@@ -51,7 +51,7 @@ export function DateTimePicker({
           <Button
             variant={'outline'}
             className={cn(
-              'flex-1 justify-start text-left font-normal bg-gray-800 border-gray-700',
+              'flex-1 justify-start text-left font-normal bg-zinc-800 border-zinc-700',
               !date && 'text-muted-foreground'
             )}
           >
@@ -59,7 +59,7 @@ export function DateTimePicker({
             {date ? format(date, 'EEE, MMM d') : <span>{placeholder}</span>}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0 bg-gray-900 border-gray-700">
+        <PopoverContent className="w-auto p-0 bg-zinc-900 border-zinc-700">
           <Calendar mode="single" selected={date} onSelect={handleDateSelect} initialFocus />
         </PopoverContent>
       </Popover>
@@ -67,7 +67,7 @@ export function DateTimePicker({
         type="time"
         value={time}
         onChange={(e) => handleTimeChange(e.target.value)}
-        className="w-32 bg-gray-800 border-gray-700"
+        className="w-32 bg-zinc-800 border-zinc-700"
       />
     </div>
   );

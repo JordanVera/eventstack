@@ -160,10 +160,10 @@ export default function CreateEventPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="container mx-auto px-4 py-8 grid grid-cols-12 gap-4">
-        <section className="col-span-8">
+      <div className="container mx-auto grid grid-cols-12 gap-4 py-8">
+        <section className="col-span-7">
           {/* Tabs */}
-          <div className="flex gap-4 mb-8">
+          <div className="mb-8 flex gap-4">
             <Button
               variant={activeTab === 'sell' ? 'default' : 'ghost'}
               onClick={() => setActiveTab('sell')}
@@ -189,7 +189,7 @@ export default function CreateEventPage() {
             <Input
               value={eventName}
               onChange={(e) => setEventName(e.target.value)}
-              className="bg-transparent border-none !text-5xl placeholder:text-5xl font-bold text-white placeholder-zinc-600 px-0 focus-visible:ring-0 py-12"
+              className="border-none bg-transparent px-0 py-12 !text-5xl font-bold text-white placeholder-zinc-600 placeholder:text-5xl focus-visible:ring-0"
               placeholder="My Event Name"
             />
           </div>
@@ -199,7 +199,7 @@ export default function CreateEventPage() {
             <Button
               variant="ghost"
               onClick={() => setSummaryModalOpen(true)}
-              className="flex items-center gap-2 text-white hover:bg-zinc-900 px-4 py-2 rounded-md"
+              className="flex items-center gap-2 rounded-md px-4 py-2 text-white hover:bg-zinc-900"
             >
               <Plus className="h-4 w-4" />
               Short Summary
@@ -207,16 +207,16 @@ export default function CreateEventPage() {
           </div>
 
           {/* Dates */}
-          <div className="mb-8 bg-zinc-900 rounded-lg p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-white font-semibold">📅 Dates</span>
+          <div className="mb-8 rounded-lg p-6">
+            <div className="mb-4 flex items-center gap-2">
+              <span className="text-white">📅 Dates</span>
             </div>
 
-            <div className="space-y-4">
+            <div className="flex justify-between gap-4 space-y-4 rounded-t-md border-b-1 border-b-black bg-zinc-900 p-2">
+              <Label className="mb-2 text-sm font-normal">Start</Label>
               <div>
-                <Label className="text-zinc-400 text-sm mb-2">Start</Label>
                 <div className="flex items-center gap-2">
-                  <span className="text-zinc-500 text-sm">{timezone}</span>
+                  <span className="text-sm text-zinc-500">{timezone}</span>
                   <DateTimePicker
                     date={startDate}
                     onDateChange={(date) => setStartDate(date || new Date())}
@@ -224,30 +224,29 @@ export default function CreateEventPage() {
                   />
                 </div>
               </div>
-
-              <div>
-                <Label className="text-zinc-400 text-sm mb-2 flex items-center gap-2">
-                  End
-                  <EyeOff className="h-4 w-4 text-zinc-500" />
-                </Label>
-                <div className="flex items-center gap-2">
-                  <span className="text-zinc-500 text-sm">{timezone}</span>
-                  <DateTimePicker
-                    date={endDate}
-                    onDateChange={(date) => setEndDate(date || new Date())}
-                    className="flex-1"
-                  />
-                </div>
+            </div>
+            <div className="flex justify-between gap-4 space-y-4 rounded-b-md bg-zinc-900 p-2">
+              <Label className="mb-2 flex items-center gap-2 text-sm font-normal">
+                End
+                <EyeOff className="h-4 w-4 text-zinc-500" />
+              </Label>
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-zinc-500">{timezone}</span>
+                <DateTimePicker
+                  date={endDate}
+                  onDateChange={(date) => setEndDate(date || new Date())}
+                  className="flex-1"
+                />
               </div>
             </div>
 
-            <div className="mt-4 flex items-center justify-between p-3 bg-zinc-800 rounded-lg">
+            <div className="mt-4 flex items-center justify-between rounded-lg bg-zinc-800 p-3">
               <div className="flex items-center gap-2">
-                <span className="text-white text-sm">🔁 Recurring Series</span>
+                <span className="text-sm text-white">🔁 Recurring Series</span>
               </div>
               <Button
                 variant="ghost"
-                className="text-zinc-400 hover:text-white px-3 py-1 h-auto"
+                className="h-auto px-3 py-1 text-zinc-400 hover:text-white"
                 onClick={() => setIsRecurringSeries(!isRecurringSeries)}
               >
                 {isRecurringSeries ? 'Yes' : 'No'}
@@ -256,51 +255,51 @@ export default function CreateEventPage() {
           </div>
 
           {/* Event Details */}
-          <div className="mb-8 bg-zinc-900 rounded-lg p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-white font-semibold">📋 Event Details</span>
+          <div className="mb-8 rounded-lg bg-zinc-900 p-6">
+            <div className="mb-4 flex items-center gap-2">
+              <span className="font-semibold text-white">📋 Event Details</span>
             </div>
 
             <div className="space-y-3">
               <Button
                 variant="ghost"
                 onClick={() => setDescriptionModalOpen(true)}
-                className="w-full justify-start text-white hover:bg-zinc-800 px-4 py-3 rounded-md"
+                className="w-full justify-start rounded-md px-4 py-3 text-white hover:bg-zinc-800"
               >
-                <Edit className="h-4 w-4 mr-2" />
+                <Edit className="mr-2 h-4 w-4" />
                 Add Description
               </Button>
 
               <Button
                 variant="ghost"
-                className="w-full justify-start text-white hover:bg-zinc-800 px-4 py-3 rounded-md"
+                className="w-full justify-start rounded-md px-4 py-3 text-white hover:bg-zinc-800"
                 onClick={() => {}}
               >
-                <MapPin className="h-4 w-4 mr-2" />
+                <MapPin className="mr-2 h-4 w-4" />
                 Location
               </Button>
               {location && (
                 <Input
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
-                  className="bg-zinc-800 border-zinc-700"
+                  className="border-zinc-700 bg-zinc-800"
                   placeholder="Enter location"
                 />
               )}
 
               <Button
                 variant="ghost"
-                className="w-full justify-start text-white hover:bg-zinc-800 px-4 py-3 rounded-md"
+                className="w-full justify-start rounded-md px-4 py-3 text-white hover:bg-zinc-800"
                 onClick={() => {}}
               >
-                <Globe className="h-4 w-4 mr-2" />
+                <Globe className="mr-2 h-4 w-4" />
                 Venue Name
               </Button>
               {venueName && (
                 <Input
                   value={venueName}
                   onChange={(e) => setVenueName(e.target.value)}
-                  className="bg-zinc-800 border-zinc-700"
+                  className="border-zinc-700 bg-zinc-800"
                   placeholder="Enter venue name"
                 />
               )}
@@ -308,15 +307,15 @@ export default function CreateEventPage() {
           </div>
 
           {/* Tickets */}
-          <div className="mb-8 bg-zinc-900 rounded-lg p-6">
-            <div className="flex items-center justify-between mb-4">
+          <div className="mb-8 rounded-lg bg-zinc-900 p-6">
+            <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <TicketIcon className="h-5 w-5" />
-                <span className="text-white font-semibold">Tickets</span>
+                <span className="font-semibold text-white">Tickets</span>
               </div>
               <a
                 href="#"
-                className="text-sm text-zinc-400 hover:text-white flex items-center gap-1"
+                className="flex items-center gap-1 text-sm text-zinc-400 hover:text-white"
               >
                 Need help launching your paid event? Join our Posh Starter Kit Orientation →
               </a>
@@ -326,12 +325,12 @@ export default function CreateEventPage() {
               {tickets.map((ticket, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between p-4 bg-zinc-800 rounded-lg hover:bg-zinc-750 cursor-pointer"
+                  className="hover:bg-zinc-750 flex cursor-pointer items-center justify-between rounded-lg bg-zinc-800 p-4"
                   onClick={() => handleEditTicket(index)}
                 >
                   <div>
-                    <div className="text-white font-medium">{ticket.name}</div>
-                    <div className="text-zinc-400 text-sm">{ticket.displayPrice}</div>
+                    <div className="font-medium text-white">{ticket.name}</div>
+                    <div className="text-sm text-zinc-400">{ticket.displayPrice}</div>
                   </div>
                   <Edit className="h-4 w-4 text-zinc-400" />
                 </div>
@@ -340,7 +339,7 @@ export default function CreateEventPage() {
               <Button
                 variant="ghost"
                 onClick={handleAddTicket}
-                className="w-full justify-center text-white hover:bg-zinc-800 py-8 rounded-md border-2 border-dashed border-zinc-700"
+                className="w-full justify-center rounded-md border-2 border-dashed border-zinc-700 py-8 text-white hover:bg-zinc-800"
               >
                 <Plus className="h-5 w-5" />
               </Button>
@@ -348,7 +347,7 @@ export default function CreateEventPage() {
           </div>
 
           {/* Additional Features */}
-          <div className="space-y-4 mb-8">
+          <div className="mb-8 space-y-4">
             <FeatureToggle
               icon={<Users className="h-5 w-5" />}
               label="Guestlist"
@@ -379,25 +378,25 @@ export default function CreateEventPage() {
           </div>
 
           {/* Page Settings */}
-          <div className="mb-8 bg-zinc-900 rounded-lg p-6">
-            <div className="flex items-center gap-2 mb-4">
+          <div className="mb-8 rounded-lg bg-zinc-900 p-6">
+            <div className="mb-4 flex items-center gap-2">
               <Settings className="h-5 w-5" />
-              <span className="text-white font-semibold">Page Settings</span>
+              <span className="font-semibold text-white">Page Settings</span>
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-zinc-800 rounded-lg">
+              <div className="flex items-center justify-between rounded-lg bg-zinc-800 p-4">
                 <div className="flex items-center gap-2">
                   <Label className="text-white">Show on Explore</Label>
-                  <span className="text-zinc-500 text-xs">(i)</span>
+                  <span className="text-xs text-zinc-500">(i)</span>
                 </div>
                 <Switch checked={showOnExplore} onCheckedChange={setShowOnExplore} />
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-zinc-800 rounded-lg">
+              <div className="flex items-center justify-between rounded-lg bg-zinc-800 p-4">
                 <div className="flex items-center gap-2">
                   <Label className="text-white">Password Protected Event</Label>
-                  <span className="text-zinc-500 text-xs">(i)</span>
+                  <span className="text-xs text-zinc-500">(i)</span>
                 </div>
                 <Switch checked={isPasswordProtected} onCheckedChange={setIsPasswordProtected} />
               </div>
@@ -408,7 +407,7 @@ export default function CreateEventPage() {
                     type="password"
                     value={eventPassword}
                     onChange={(e) => setEventPassword(e.target.value)}
-                    className="bg-zinc-800 border-zinc-700"
+                    className="border-zinc-700 bg-zinc-800"
                     placeholder="Enter event password"
                   />
                 </div>
@@ -417,17 +416,17 @@ export default function CreateEventPage() {
           </div>
 
           {/* Save Button */}
-          <div className="flex justify-center gap-4 mt-8">
+          <div className="mt-8 flex justify-center gap-4">
             <Button
               onClick={handleSaveEvent}
               disabled={isSaving}
-              className="bg-white text-black hover:bg-zinc-200 px-12 py-6 rounded-full text-lg font-semibold"
+              className="rounded-full bg-white px-12 py-6 text-lg font-semibold text-black hover:bg-zinc-200"
             >
               {isSaving ? 'Creating Event...' : 'Create Event'}
             </Button>
           </div>
         </section>
-        <aside className="col-span-4">
+        <aside className="col-span-5">
           <h2 className="text-2xl font-bold">Event Details</h2>
         </aside>
       </div>
@@ -466,11 +465,11 @@ interface FeatureToggleProps {
 
 function FeatureToggle({ icon, label, enabled, onToggle }: FeatureToggleProps) {
   return (
-    <div className="flex items-center justify-between p-4 bg-zinc-900 rounded-lg border border-zinc-800">
+    <div className="flex items-center justify-between rounded-lg border border-zinc-800 bg-zinc-900 p-4">
       <div className="flex items-center gap-3">
         {icon}
         <Label className="text-white">{label}</Label>
-        <span className="text-zinc-500 text-xs">(i)</span>
+        <span className="text-xs text-zinc-500">(i)</span>
       </div>
       <Button
         variant="ghost"

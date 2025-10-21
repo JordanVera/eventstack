@@ -207,7 +207,7 @@ export default function CreateEventPage() {
           </div>
 
           {/* Dates */}
-          <div className="mb-8 border-b border-b-zinc-800 py-6 pb-14">
+          <div className="mb-4 border-b-2 border-b-zinc-800 py-6">
             <div className="mb-4 flex items-center gap-2">
               <span className="text-white">📅 Dates</span>
             </div>
@@ -255,7 +255,7 @@ export default function CreateEventPage() {
           </div>
 
           {/* Event Details */}
-          <div className="mb-8 rounded-lg py-6">
+          <div className="mb-4 border-b-2 border-b-zinc-800 py-6">
             <div className="mb-4 flex items-center gap-2">
               <span className="font-semibold text-white">📋 Event Details</span>
             </div>

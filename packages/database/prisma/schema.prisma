@@ -87,6 +87,7 @@ model Event {
   eventFeaturesEnabled Boolean @default(false)
   youtubeVideoEnabled  Boolean @default(false)
   youtubeVideoUrl      String?
+  flyerImageUrl        String?
   imageGalleryEnabled  Boolean @default(false)
   imageGalleryUrls     String? @db.Text // JSON array of URLs
 

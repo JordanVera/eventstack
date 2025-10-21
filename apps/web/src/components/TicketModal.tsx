@@ -69,28 +69,28 @@ export function TicketModal({ open, onOpenChange, initialData, onSave }: TicketM
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-black border-gray-800">
+      <DialogContent className="max-h-[90vh] max-w-4xl overflow-y-auto border-zinc-800 bg-black">
         <DialogHeader>
           <DialogTitle className="text-white">Create Ticket</DialogTitle>
         </DialogHeader>
 
-        <div className="space-y-6 mt-4">
+        <div className="mt-4 space-y-6">
           {/* Ticket Name and Quantity */}
-          <div className="flex gap-4 items-start">
+          <div className="flex items-start gap-4">
             <div className="flex-1">
               <Input
                 value={ticket.name}
                 onChange={(e) => updateTicket({ name: e.target.value })}
-                className="bg-gray-800 border-gray-700 text-white text-lg"
+                className="border-zinc-700 bg-zinc-800 text-lg text-white"
                 placeholder="Default Ticket"
               />
             </div>
-            <div className="flex items-center gap-2 bg-gray-800 border border-gray-700 rounded-md px-4 py-2">
-              <Label className="text-gray-400 text-sm">QTY</Label>
+            <div className="flex items-center gap-2 rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2">
+              <Label className="text-sm text-zinc-400">QTY</Label>
               <Button
                 variant="ghost"
                 size="sm"
-                className={`${ticket.isUnlimited ? 'bg-gray-700' : ''} text-white px-3 py-1`}
+                className={`${ticket.isUnlimited ? 'bg-zinc-700' : ''} px-3 py-1 text-white`}
                 onClick={() => updateTicket({ isUnlimited: !ticket.isUnlimited })}
               >
                 {ticket.isUnlimited ? 'Unlimited' : ticket.quantity || 0}
@@ -101,26 +101,26 @@ export function TicketModal({ open, onOpenChange, initialData, onSave }: TicketM
           {/* Pricing */}
           <div className="flex gap-4">
             <div className="flex-1">
-              <Label className="text-gray-400 text-sm mb-2 flex items-center gap-2">
+              <Label className="mb-2 flex items-center gap-2 text-sm text-zinc-400">
                 Gross Price
-                <span className="text-gray-500 text-xs">(i)</span>
+                <span className="text-xs text-zinc-500">(i)</span>
               </Label>
               <Input
                 value={ticket.displayPrice}
                 onChange={(e) => updateTicket({ displayPrice: e.target.value })}
-                className="bg-gray-800 border-gray-700 text-white"
+                className="border-zinc-700 bg-zinc-800 text-white"
                 placeholder="Free"
               />
             </div>
             <div className="flex-1">
-              <Label className="text-gray-400 text-sm mb-2 flex items-center gap-2">
+              <Label className="mb-2 flex items-center gap-2 text-sm text-zinc-400">
                 Display Price
-                <span className="text-gray-500 text-xs">(i)</span>
+                <span className="text-xs text-zinc-500">(i)</span>
               </Label>
               <Input
                 value={ticket.displayPrice}
                 onChange={(e) => updateTicket({ displayPrice: e.target.value })}
-                className="bg-gray-800 border-gray-700 text-white"
+                className="border-zinc-700 bg-zinc-800 text-white"
                 placeholder="Free"
               />
             </div>
@@ -128,8 +128,8 @@ export function TicketModal({ open, onOpenChange, initialData, onSave }: TicketM
 
           {/* Description */}
           <div>
-            <Label className="text-gray-400 text-sm mb-2">Description</Label>
-            <div className="bg-gray-800 border border-gray-700 rounded-md">
+            <Label className="mb-2 text-sm text-zinc-400">Description</Label>
+            <div className="rounded-md border border-zinc-700 bg-zinc-800">
               <RichTextEditor
                 content={ticket.description}
                 onChange={(content) => updateTicket({ description: content })}
@@ -141,25 +141,25 @@ export function TicketModal({ open, onOpenChange, initialData, onSave }: TicketM
 
           {/* Ticket Settings */}
           <div>
-            <div className="flex items-center justify-between mb-4">
+            <div className="mb-4 flex items-center justify-between">
               <Label className="text-white">Ticket Settings</Label>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setShowMoreSettings(!showMoreSettings)}
-                className="text-gray-400 hover:text-white"
+                className="text-zinc-400 hover:text-white"
               >
-                <Settings className="h-4 w-4 mr-2" />
+                <Settings className="mr-2 h-4 w-4" />
                 More settings
               </Button>
             </div>
 
             <div className="space-y-4">
               {/* Limit Sales Period */}
-              <div className="flex items-center justify-between p-4 bg-gray-900 border border-gray-800 rounded-lg">
+              <div className="flex items-center justify-between rounded-lg border border-zinc-800 bg-zinc-900 p-4">
                 <div className="flex items-center gap-2">
                   <Label className="text-white">Limit Sales Period</Label>
-                  <span className="text-gray-500 text-xs">(i)</span>
+                  <span className="text-xs text-zinc-500">(i)</span>
                 </div>
                 <Switch
                   checked={ticket.limitSalesPeriod}
@@ -168,16 +168,16 @@ export function TicketModal({ open, onOpenChange, initialData, onSave }: TicketM
               </div>
 
               {ticket.limitSalesPeriod && (
-                <div className="pl-4 space-y-2">
+                <div className="space-y-2 pl-4">
                   <div>
-                    <Label className="text-gray-400 text-sm mb-2">Sales Start</Label>
+                    <Label className="mb-2 text-sm text-zinc-400">Sales Start</Label>
                     <DateTimePicker
                       date={ticket.salesStartDate}
                       onDateChange={(date) => updateTicket({ salesStartDate: date })}
                     />
                   </div>
                   <div>
-                    <Label className="text-gray-400 text-sm mb-2">Sales End</Label>
+                    <Label className="mb-2 text-sm text-zinc-400">Sales End</Label>
                     <DateTimePicker
                       date={ticket.salesEndDate}
                       onDateChange={(date) => updateTicket({ salesEndDate: date })}
@@ -187,10 +187,10 @@ export function TicketModal({ open, onOpenChange, initialData, onSave }: TicketM
               )}
 
               {/* Limit Ticket Validity */}
-              <div className="flex items-center justify-between p-4 bg-gray-900 border border-gray-800 rounded-lg">
+              <div className="flex items-center justify-between rounded-lg border border-zinc-800 bg-zinc-900 p-4">
                 <div className="flex items-center gap-2">
                   <Label className="text-white">Limit Ticket Validity</Label>
-                  <span className="text-gray-500 text-xs">(i)</span>
+                  <span className="text-xs text-zinc-500">(i)</span>
                 </div>
                 <Switch
                   checked={ticket.limitTicketValidity}
@@ -199,16 +199,16 @@ export function TicketModal({ open, onOpenChange, initialData, onSave }: TicketM
               </div>
 
               {ticket.limitTicketValidity && (
-                <div className="pl-4 space-y-2">
+                <div className="space-y-2 pl-4">
                   <div>
-                    <Label className="text-gray-400 text-sm mb-2">Valid From</Label>
+                    <Label className="mb-2 text-sm text-zinc-400">Valid From</Label>
                     <DateTimePicker
                       date={ticket.validityStartDate}
                       onDateChange={(date) => updateTicket({ validityStartDate: date })}
                     />
                   </div>
                   <div>
-                    <Label className="text-gray-400 text-sm mb-2">Valid Until</Label>
+                    <Label className="mb-2 text-sm text-zinc-400">Valid Until</Label>
                     <DateTimePicker
                       date={ticket.validityEndDate}
                       onDateChange={(date) => updateTicket({ validityEndDate: date })}
@@ -218,10 +218,10 @@ export function TicketModal({ open, onOpenChange, initialData, onSave }: TicketM
               )}
 
               {/* Limit Purchase Quantity */}
-              <div className="flex items-center justify-between p-4 bg-gray-900 border border-gray-800 rounded-lg">
+              <div className="flex items-center justify-between rounded-lg border border-zinc-800 bg-zinc-900 p-4">
                 <div className="flex items-center gap-2">
                   <Label className="text-white">Limit Purchase Quantity</Label>
-                  <span className="text-gray-500 text-xs">(i)</span>
+                  <span className="text-xs text-zinc-500">(i)</span>
                 </div>
                 <Switch
                   checked={ticket.limitPurchaseQuantity}
@@ -230,9 +230,9 @@ export function TicketModal({ open, onOpenChange, initialData, onSave }: TicketM
               </div>
 
               {ticket.limitPurchaseQuantity && (
-                <div className="pl-4 flex gap-4">
+                <div className="flex gap-4 pl-4">
                   <div className="flex-1">
-                    <Label className="text-gray-400 text-sm mb-2">Min Quantity</Label>
+                    <Label className="mb-2 text-sm text-zinc-400">Min Quantity</Label>
                     <Input
                       type="number"
                       value={ticket.minPurchaseQuantity || ''}
@@ -241,12 +241,12 @@ export function TicketModal({ open, onOpenChange, initialData, onSave }: TicketM
                           minPurchaseQuantity: parseInt(e.target.value) || 1,
                         })
                       }
-                      className="bg-gray-800 border-gray-700 text-white"
+                      className="border-zinc-700 bg-zinc-800 text-white"
                       placeholder="1"
                     />
                   </div>
                   <div className="flex-1">
-                    <Label className="text-gray-400 text-sm mb-2">Max Quantity</Label>
+                    <Label className="mb-2 text-sm text-zinc-400">Max Quantity</Label>
                     <Input
                       type="number"
                       value={ticket.maxPurchaseQuantity || ''}
@@ -255,7 +255,7 @@ export function TicketModal({ open, onOpenChange, initialData, onSave }: TicketM
                           maxPurchaseQuantity: parseInt(e.target.value) || 10,
                         })
                       }
-                      className="bg-gray-800 border-gray-700 text-white"
+                      className="border-zinc-700 bg-zinc-800 text-white"
                       placeholder="10"
                     />
                   </div>
@@ -266,14 +266,14 @@ export function TicketModal({ open, onOpenChange, initialData, onSave }: TicketM
         </div>
 
         {/* Actions */}
-        <div className="flex flex-col items-center gap-3 mt-6">
+        <div className="mt-6 flex flex-col items-center gap-3">
           <Button
             onClick={handleSave}
-            className="bg-white text-black hover:bg-gray-200 px-12 rounded-full w-full max-w-md"
+            className="w-full max-w-md rounded-full bg-white px-12 text-black hover:bg-zinc-200"
           >
             Create Ticket
           </Button>
-          <Button onClick={handleCancel} variant="ghost" className="text-gray-400 hover:text-white">
+          <Button onClick={handleCancel} variant="ghost" className="text-zinc-400 hover:text-white">
             Cancel
           </Button>
         </div>

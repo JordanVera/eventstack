@@ -9,8 +9,8 @@ const Header = () => {
   const { data: session, status } = useSession();
 
   return (
-    <nav className="w-full bg-black text-white py-4 px-6 border-b border-white/10 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+    <nav className="sticky top-0 z-50 w-full border-b border-white/10 bg-black px-6 py-4 text-white">
+      <div className="mx-auto flex max-w-7xl items-center justify-between">
         <div className="flex items-center gap-6">
           <Link href="/" className="text-xl font-bold hover:text-gray-300">
             Event Stack
@@ -20,6 +20,9 @@ const Header = () => {
           </Link>
           <Link href="/events/create" className="hover:text-gray-300">
             Create Event
+          </Link>
+          <Link href="/events" className="hover:text-gray-300">
+            Browse Events
           </Link>
         </div>
         <div className="flex items-center gap-3">
@@ -33,7 +36,7 @@ const Header = () => {
               </div>
               <Button
                 onClick={() => signOut({ callbackUrl: '/' })}
-                className="bg-red-600 hover:bg-red-700 cursor-pointer flex items-center gap-2"
+                className="flex cursor-pointer items-center gap-2 bg-red-600 hover:bg-red-700"
               >
                 <LogOut size={16} />
                 Sign Out
@@ -42,10 +45,10 @@ const Header = () => {
           ) : (
             <>
               <Link href="/login">
-                <Button className="bg-blue-600 cursor-pointer">Login</Button>
+                <Button className="cursor-pointer bg-blue-600">Login</Button>
               </Link>
               <Link href="/signup">
-                <Button className="bg-zinc-700 cursor-pointer">Sign Up</Button>
+                <Button className="cursor-pointer bg-zinc-700">Sign Up</Button>
               </Link>
             </>
           )}

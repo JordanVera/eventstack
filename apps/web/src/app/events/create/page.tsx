@@ -159,8 +159,8 @@ export default function CreateEventPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="container mx-auto grid grid-cols-12 gap-4 py-8">
+    <div className="container min-h-screen bg-black text-white">
+      <div className="mx-auto grid grid-cols-12 gap-4 py-8">
         <section className="col-span-7">
           {/* Tabs */}
           <div className="mb-8 flex gap-4">
@@ -307,7 +307,7 @@ export default function CreateEventPage() {
           </div>
 
           {/* Tickets */}
-          <div className="mb-8 rounded-lg bg-zinc-900 p-6">
+          <div className="mb-4 border-b-2 border-b-zinc-800 py-6">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <TicketIcon className="h-5 w-5" />

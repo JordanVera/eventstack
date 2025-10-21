@@ -159,9 +159,9 @@ export default function CreateEventPage() {
   };
 
   return (
-    <div className="container min-h-screen bg-black text-white">
+    <div className="mx-auto min-h-screen max-w-7xl bg-black text-white">
       <div className="mx-auto grid grid-cols-12 gap-4 py-8">
-        <section className="col-span-7">
+        <section className="col-span-12 md:col-span-7">
           {/* Tabs */}
           <div className="mb-8 flex gap-4">
             <Button
@@ -426,7 +426,7 @@ export default function CreateEventPage() {
             </Button>
           </div>
         </section>
-        <aside className="col-span-5">
+        <aside className="col-span-12 md:col-span-5">
           <h2 className="text-2xl font-bold">Event Details</h2>
         </aside>
       </div>

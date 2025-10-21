@@ -9,9 +9,9 @@ const EventCard = ({ event }: { event: Event }) => {
     <Link
       key={event.id}
       href={`/events/${event.id}`}
-      className="group block h-full w-full cursor-pointer"
+      className="block h-full w-full cursor-pointer"
     >
-      <div className="flex h-full w-full flex-col overflow-hidden rounded-lg bg-zinc-900 transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+      <div className="flex h-full w-full flex-col overflow-hidden rounded-lg border border-zinc-800 transition-transform duration-300 hover:border-white">
         {/* Event Flyer Image */}
         <div className="relative aspect-square w-full">
           {event.flyerImageUrl ? (
@@ -40,9 +40,7 @@ const EventCard = ({ event }: { event: Event }) => {
 
         {/* Event Details */}
         <div className="flex-1 p-4">
-          <h2 className="mb-2 line-clamp-2 text-xl font-bold transition-colors group-hover:text-purple-400">
-            {event.title}
-          </h2>
+          <h2 className="mb-2 line-clamp-2 text-xl font-bold transition-colors">{event.title}</h2>
           {event.venueName && <p className="text-sm text-gray-400">{event.venueName}</p>}
           {event.location && !event.venueName && (
             <p className="line-clamp-1 text-sm text-gray-400">{event.location}</p>

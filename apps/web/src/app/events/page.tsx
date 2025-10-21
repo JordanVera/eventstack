@@ -1,5 +1,4 @@
 import React from 'react';
-import { format } from 'date-fns';
 import { appRouter } from '@/lib/routers';
 import EventCard from '@/components/cards/EventCard';
 
@@ -12,7 +11,7 @@ const EventsPage = async () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="w-full px-4 py-8">
+      <div className="w-full px-4 py-6">
         {events && events.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {events.map((event) => (

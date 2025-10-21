@@ -6,7 +6,7 @@ import '@/styles/global.css';
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="flex min-h-screen flex-col bg-black text-white">
+      <body className="bg-black text-white">
         <SessionProvider>
           <TRPCProvider>
             <Header />

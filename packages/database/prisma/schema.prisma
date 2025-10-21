@@ -69,16 +69,71 @@ model VerificationToken {
 }
 
 model Event {
-  id          String   @id @default(cuid())
-  title       String
-  description String?
-  startDate   DateTime
-  endDate     DateTime
-  createdAt   DateTime @default(now())
-  userId      String
+  id                String   @id @default(cuid())
+  title             String
+  shortSummary      String?  @db.Text
+  description       String?  @db.Text
+  startDate         DateTime
+  endDate           DateTime
+  timezone          String   @default("GMT -5")
+  isRecurringSeries Boolean  @default(false)
+
+  // Location details
+  location  String?
+  venueName String?
+
+  // Features
+  guestlistEnabled     Boolean @default(false)
+  eventFeaturesEnabled Boolean @default(false)
+  youtubeVideoEnabled  Boolean @default(false)
+  youtubeVideoUrl      String?
+  imageGalleryEnabled  Boolean @default(false)
+  imageGalleryUrls     String? @db.Text // JSON array of URLs
+
+  // Page settings
+  showOnExplore       Boolean @default(true)
+  isPasswordProtected Boolean @default(false)
+  eventPassword       String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
 
   // Relations
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tickets Ticket[]
 
   @@index([userId])
+}
+
+model Ticket {
+  id           String  @id @default(cuid())
+  eventId      String
+  name         String
+  description  String? @db.Text
+  grossPrice   Float   @default(0)
+  displayPrice String  @default("Free")
+  quantity     Int? // null = unlimited
+  isUnlimited  Boolean @default(true)
+
+  // Ticket settings
+  limitSalesPeriod Boolean   @default(false)
+  salesStartDate   DateTime?
+  salesEndDate     DateTime?
+
+  limitTicketValidity Boolean   @default(false)
+  validityStartDate   DateTime?
+  validityEndDate     DateTime?
+
+  limitPurchaseQuantity Boolean @default(false)
+  minPurchaseQuantity   Int?
+  maxPurchaseQuantity   Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@index([eventId])
 }

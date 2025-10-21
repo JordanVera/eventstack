@@ -6,11 +6,11 @@ import '@/styles/global.css';
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col bg-black text-white">
         <SessionProvider>
           <TRPCProvider>
             <Header />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 container mx-auto">{children}</main>
           </TRPCProvider>
         </SessionProvider>
       </body>

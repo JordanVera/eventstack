@@ -18,8 +18,8 @@ const Header = () => {
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
-          <Link href="/about" className="hover:text-gray-300">
-            About
+          <Link href="/events/create" className="hover:text-gray-300">
+            Create Event
           </Link>
         </div>
         <div className="flex items-center gap-3">

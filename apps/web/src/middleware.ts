@@ -10,6 +10,11 @@ export default auth((req) => {
     return NextResponse.redirect(new URL('/login', req.url));
   }
 
+  // Protect event creation routes
+  if (pathname.startsWith('/events/create') && !isAuthenticated) {
+    return NextResponse.redirect(new URL('/login', req.url));
+  }
+
   return NextResponse.next();
 });
 

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { trpc } from '@/lib/trpc-client';
 
 export default function SignupPage() {
   const router = useRouter();
@@ -14,7 +15,15 @@ export default function SignupPage() {
     confirmPassword: '',
   });
   const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+
+  const signupMutation = trpc.auth.signup.useMutation({
+    onSuccess: () => {
+      router.push('/login');
+    },
+    onError: (error) => {
+      setError(error.message);
+    },
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({
@@ -37,33 +46,11 @@ export default function SignupPage() {
       return;
     }
 
-    setIsLoading(true);
-
-    try {
-      const response = await fetch('/api/auth/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          password: formData.password,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Something went wrong');
-      }
-
-      router.push('/login');
-    } catch (error: any) {
-      setError(error.message || 'Failed to create account');
-    } finally {
-      setIsLoading(false);
-    }
+    signupMutation.mutate({
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+    });
   };
 
   return (
@@ -151,10 +138,10 @@ export default function SignupPage() {
 
             <Button
               type="submit"
-              disabled={isLoading}
+              disabled={signupMutation.isPending}
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? 'Creating account...' : 'Sign Up'}
+              {signupMutation.isPending ? 'Creating account...' : 'Sign Up'}
             </Button>
           </form>
 

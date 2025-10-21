@@ -35,8 +35,9 @@ Created sleek, modern UI pages:
 
 ### 4. **API Routes**
 
-- `/api/auth/[...nextauth]` - NextAuth handler
-- `/api/auth/signup` - User registration endpoint
+- `/api/auth/[...nextauth]` - NextAuth authentication handler
+- `/api/trpc` - tRPC endpoint
+  - `auth.signup` mutation - Type-safe user registration with full validation
 
 ### 5. **Protected Routes**
 
@@ -80,10 +81,9 @@ apps/web/
 │   ├── app/
 │   │   ├── api/
 │   │   │   └── auth/
-│   │   │       ├── [...nextauth]/route.ts
-│   │   │       └── signup/route.ts
+│   │   │       └── [...nextauth]/route.ts
 │   │   ├── login/page.tsx
-│   │   ├── signup/page.tsx
+│   │   ├── signup/page.tsx (uses tRPC mutation)
 │   │   ├── dashboard/page.tsx (protected)
 │   │   ├── layout.tsx (with SessionProvider)
 │   │   └── page.tsx (home with auth status)
@@ -92,7 +92,12 @@ apps/web/
 │   │   └── SessionProvider.tsx
 │   ├── lib/
 │   │   ├── auth.ts (NextAuth config)
-│   │   └── auth-helpers.ts
+│   │   ├── auth-helpers.ts
+│   │   └── routers/
+│   │       ├── auth.ts (signup mutation)
+│   │       ├── users.ts
+│   │       ├── events.ts
+│   │       └── index.ts
 │   ├── types/
 │   │   └── next-auth.d.ts
 │   └── middleware.ts (route protection)
@@ -106,13 +111,14 @@ apps/web/
 
 Create `.env.local` in `/apps/web/`:
 
-```env
-DATABASE_URL="mysql://user:password@localhost:3306/event_stack"
-NEXTAUTH_URL="http://localhost:3000"
-NEXTAUTH_SECRET="your-secret-key-here"
+```bash
+cd apps/web
+echo 'DATABASE_URL="mysql://user:password@localhost:3306/event_stack"' > .env.local
+echo 'NEXTAUTH_URL="http://localhost:3000"' >> .env.local
+echo "NEXTAUTH_SECRET=\"$(openssl rand -base64 32)\"" >> .env.local
 ```
 
-Generate secret: `openssl rand -base64 32`
+Or create manually with your database credentials and a secure secret.
 
 ### 2. Run the application
 

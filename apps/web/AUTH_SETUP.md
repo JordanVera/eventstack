@@ -19,8 +19,8 @@ This application uses **NextAuth.js v5 (beta)** for authentication with credenti
 
 ## API Routes
 
-- `/api/auth/[...nextauth]` - NextAuth handler
-- `/api/auth/signup` - User registration endpoint
+- `/api/auth/[...nextauth]` - NextAuth authentication handler
+- `/api/trpc` - tRPC endpoint (includes auth.signup mutation for user registration)
 
 ## Configuration
 
@@ -112,10 +112,20 @@ export default async function Page() {
 
 ## How It Works
 
-1. **Signup**: Users register with name, email, and password. Password is hashed with bcryptjs before storage.
-2. **Login**: Credentials are verified against the database, and a JWT session is created.
+1. **Signup**: Users register with name, email, and password via the tRPC `auth.signup` mutation. Password is hashed with bcryptjs before storage. This uses tRPC for type-safe API calls.
+2. **Login**: Credentials are verified against the database through NextAuth, and a JWT session is created.
 3. **Session**: JWT tokens are stored in HTTP-only cookies for security.
 4. **Sign Out**: Session is cleared and user is redirected.
+
+### Why tRPC for Signup?
+
+The signup functionality uses **tRPC** instead of a traditional REST API because:
+
+- ✅ **Type Safety** - Full end-to-end TypeScript type safety
+- ✅ **Consistency** - Matches the rest of your API architecture
+- ✅ **Better DX** - Auto-completion and inline errors in your IDE
+- ✅ **Built-in Validation** - Uses Zod for input validation
+- ✅ **Error Handling** - Structured error responses with tRPC errors
 
 ## Extending Authentication
 

@@ -160,268 +160,276 @@ export default function CreateEventPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        {/* Tabs */}
-        <div className="flex gap-4 mb-8">
-          <Button
-            variant={activeTab === 'sell' ? 'default' : 'ghost'}
-            onClick={() => setActiveTab('sell')}
-            className={`flex-1 rounded-full ${
-              activeTab === 'sell' ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:text-white'
-            }`}
-          >
-            Sell Tickets
-          </Button>
-          <Button
-            variant={activeTab === 'rsvp' ? 'default' : 'ghost'}
-            onClick={() => setActiveTab('rsvp')}
-            className={`flex-1 rounded-full ${
-              activeTab === 'rsvp' ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:text-white'
-            }`}
-          >
-            RSVP
-          </Button>
-        </div>
-
-        {/* Event Name */}
-        <div className="mb-8">
-          <Input
-            value={eventName}
-            onChange={(e) => setEventName(e.target.value)}
-            className="bg-transparent border-none text-5xl font-bold text-white placeholder-zinc-600 px-0 focus-visible:ring-0"
-            placeholder="My Event Name"
-          />
-        </div>
-
-        {/* Short Summary */}
-        <div className="mb-8">
-          <Button
-            variant="ghost"
-            onClick={() => setSummaryModalOpen(true)}
-            className="flex items-center gap-2 text-white hover:bg-zinc-900 px-4 py-2 rounded-md"
-          >
-            <Plus className="h-4 w-4" />
-            Short Summary
-          </Button>
-        </div>
-
-        {/* Dates */}
-        <div className="mb-8 bg-zinc-900 rounded-lg p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-white font-semibold">📅 Dates</span>
-          </div>
-
-          <div className="space-y-4">
-            <div>
-              <Label className="text-zinc-400 text-sm mb-2">Start</Label>
-              <div className="flex items-center gap-2">
-                <span className="text-zinc-500 text-sm">{timezone}</span>
-                <DateTimePicker
-                  date={startDate}
-                  onDateChange={(date) => setStartDate(date || new Date())}
-                  className="flex-1"
-                />
-              </div>
-            </div>
-
-            <div>
-              <Label className="text-zinc-400 text-sm mb-2 flex items-center gap-2">
-                End
-                <EyeOff className="h-4 w-4 text-zinc-500" />
-              </Label>
-              <div className="flex items-center gap-2">
-                <span className="text-zinc-500 text-sm">{timezone}</span>
-                <DateTimePicker
-                  date={endDate}
-                  onDateChange={(date) => setEndDate(date || new Date())}
-                  className="flex-1"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-4 flex items-center justify-between p-3 bg-zinc-800 rounded-lg">
-            <div className="flex items-center gap-2">
-              <span className="text-white text-sm">🔁 Recurring Series</span>
-            </div>
+      <div className="container mx-auto px-4 py-8 grid grid-cols-12 gap-4">
+        <section className="col-span-8">
+          {/* Tabs */}
+          <div className="flex gap-4 mb-8">
             <Button
-              variant="ghost"
-              className="text-zinc-400 hover:text-white px-3 py-1 h-auto"
-              onClick={() => setIsRecurringSeries(!isRecurringSeries)}
+              variant={activeTab === 'sell' ? 'default' : 'ghost'}
+              onClick={() => setActiveTab('sell')}
+              className={`flex-1 rounded-full ${
+                activeTab === 'sell' ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:text-white'
+              }`}
             >
-              {isRecurringSeries ? 'Yes' : 'No'}
+              Sell Tickets
+            </Button>
+            <Button
+              variant={activeTab === 'rsvp' ? 'default' : 'ghost'}
+              onClick={() => setActiveTab('rsvp')}
+              className={`flex-1 rounded-full ${
+                activeTab === 'rsvp' ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:text-white'
+              }`}
+            >
+              RSVP
             </Button>
           </div>
-        </div>
 
-        {/* Event Details */}
-        <div className="mb-8 bg-zinc-900 rounded-lg p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-white font-semibold">📋 Event Details</span>
+          {/* Event Name */}
+          <div className="mb-8">
+            <Input
+              value={eventName}
+              onChange={(e) => setEventName(e.target.value)}
+              className="bg-transparent border-none !text-5xl placeholder:text-5xl font-bold text-white placeholder-zinc-600 px-0 focus-visible:ring-0 py-12"
+              placeholder="My Event Name"
+            />
           </div>
 
-          <div className="space-y-3">
+          {/* Short Summary */}
+          <div className="mb-8">
             <Button
               variant="ghost"
-              onClick={() => setDescriptionModalOpen(true)}
-              className="w-full justify-start text-white hover:bg-zinc-800 px-4 py-3 rounded-md"
+              onClick={() => setSummaryModalOpen(true)}
+              className="flex items-center gap-2 text-white hover:bg-zinc-900 px-4 py-2 rounded-md"
             >
-              <Edit className="h-4 w-4 mr-2" />
-              Add Description
+              <Plus className="h-4 w-4" />
+              Short Summary
             </Button>
-
-            <Button
-              variant="ghost"
-              className="w-full justify-start text-white hover:bg-zinc-800 px-4 py-3 rounded-md"
-              onClick={() => {}}
-            >
-              <MapPin className="h-4 w-4 mr-2" />
-              Location
-            </Button>
-            {location && (
-              <Input
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                className="bg-zinc-800 border-zinc-700"
-                placeholder="Enter location"
-              />
-            )}
-
-            <Button
-              variant="ghost"
-              className="w-full justify-start text-white hover:bg-zinc-800 px-4 py-3 rounded-md"
-              onClick={() => {}}
-            >
-              <Globe className="h-4 w-4 mr-2" />
-              Venue Name
-            </Button>
-            {venueName && (
-              <Input
-                value={venueName}
-                onChange={(e) => setVenueName(e.target.value)}
-                className="bg-zinc-800 border-zinc-700"
-                placeholder="Enter venue name"
-              />
-            )}
           </div>
-        </div>
 
-        {/* Tickets */}
-        <div className="mb-8 bg-zinc-900 rounded-lg p-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <TicketIcon className="h-5 w-5" />
-              <span className="text-white font-semibold">Tickets</span>
+          {/* Dates */}
+          <div className="mb-8 bg-zinc-900 rounded-lg p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-white font-semibold">📅 Dates</span>
             </div>
-            <a href="#" className="text-sm text-zinc-400 hover:text-white flex items-center gap-1">
-              Need help launching your paid event? Join our Posh Starter Kit Orientation →
-            </a>
-          </div>
 
-          <div className="space-y-3">
-            {tickets.map((ticket, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between p-4 bg-zinc-800 rounded-lg hover:bg-zinc-750 cursor-pointer"
-                onClick={() => handleEditTicket(index)}
-              >
-                <div>
-                  <div className="text-white font-medium">{ticket.name}</div>
-                  <div className="text-zinc-400 text-sm">{ticket.displayPrice}</div>
+            <div className="space-y-4">
+              <div>
+                <Label className="text-zinc-400 text-sm mb-2">Start</Label>
+                <div className="flex items-center gap-2">
+                  <span className="text-zinc-500 text-sm">{timezone}</span>
+                  <DateTimePicker
+                    date={startDate}
+                    onDateChange={(date) => setStartDate(date || new Date())}
+                    className="flex-1"
+                  />
                 </div>
-                <Edit className="h-4 w-4 text-zinc-400" />
               </div>
-            ))}
 
+              <div>
+                <Label className="text-zinc-400 text-sm mb-2 flex items-center gap-2">
+                  End
+                  <EyeOff className="h-4 w-4 text-zinc-500" />
+                </Label>
+                <div className="flex items-center gap-2">
+                  <span className="text-zinc-500 text-sm">{timezone}</span>
+                  <DateTimePicker
+                    date={endDate}
+                    onDateChange={(date) => setEndDate(date || new Date())}
+                    className="flex-1"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-4 flex items-center justify-between p-3 bg-zinc-800 rounded-lg">
+              <div className="flex items-center gap-2">
+                <span className="text-white text-sm">🔁 Recurring Series</span>
+              </div>
+              <Button
+                variant="ghost"
+                className="text-zinc-400 hover:text-white px-3 py-1 h-auto"
+                onClick={() => setIsRecurringSeries(!isRecurringSeries)}
+              >
+                {isRecurringSeries ? 'Yes' : 'No'}
+              </Button>
+            </div>
+          </div>
+
+          {/* Event Details */}
+          <div className="mb-8 bg-zinc-900 rounded-lg p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-white font-semibold">📋 Event Details</span>
+            </div>
+
+            <div className="space-y-3">
+              <Button
+                variant="ghost"
+                onClick={() => setDescriptionModalOpen(true)}
+                className="w-full justify-start text-white hover:bg-zinc-800 px-4 py-3 rounded-md"
+              >
+                <Edit className="h-4 w-4 mr-2" />
+                Add Description
+              </Button>
+
+              <Button
+                variant="ghost"
+                className="w-full justify-start text-white hover:bg-zinc-800 px-4 py-3 rounded-md"
+                onClick={() => {}}
+              >
+                <MapPin className="h-4 w-4 mr-2" />
+                Location
+              </Button>
+              {location && (
+                <Input
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  className="bg-zinc-800 border-zinc-700"
+                  placeholder="Enter location"
+                />
+              )}
+
+              <Button
+                variant="ghost"
+                className="w-full justify-start text-white hover:bg-zinc-800 px-4 py-3 rounded-md"
+                onClick={() => {}}
+              >
+                <Globe className="h-4 w-4 mr-2" />
+                Venue Name
+              </Button>
+              {venueName && (
+                <Input
+                  value={venueName}
+                  onChange={(e) => setVenueName(e.target.value)}
+                  className="bg-zinc-800 border-zinc-700"
+                  placeholder="Enter venue name"
+                />
+              )}
+            </div>
+          </div>
+
+          {/* Tickets */}
+          <div className="mb-8 bg-zinc-900 rounded-lg p-6">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <TicketIcon className="h-5 w-5" />
+                <span className="text-white font-semibold">Tickets</span>
+              </div>
+              <a
+                href="#"
+                className="text-sm text-zinc-400 hover:text-white flex items-center gap-1"
+              >
+                Need help launching your paid event? Join our Posh Starter Kit Orientation →
+              </a>
+            </div>
+
+            <div className="space-y-3">
+              {tickets.map((ticket, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-4 bg-zinc-800 rounded-lg hover:bg-zinc-750 cursor-pointer"
+                  onClick={() => handleEditTicket(index)}
+                >
+                  <div>
+                    <div className="text-white font-medium">{ticket.name}</div>
+                    <div className="text-zinc-400 text-sm">{ticket.displayPrice}</div>
+                  </div>
+                  <Edit className="h-4 w-4 text-zinc-400" />
+                </div>
+              ))}
+
+              <Button
+                variant="ghost"
+                onClick={handleAddTicket}
+                className="w-full justify-center text-white hover:bg-zinc-800 py-8 rounded-md border-2 border-dashed border-zinc-700"
+              >
+                <Plus className="h-5 w-5" />
+              </Button>
+            </div>
+          </div>
+
+          {/* Additional Features */}
+          <div className="space-y-4 mb-8">
+            <FeatureToggle
+              icon={<Users className="h-5 w-5" />}
+              label="Guestlist"
+              enabled={guestlistEnabled}
+              onToggle={setGuestlistEnabled}
+            />
+
+            <FeatureToggle
+              icon={<Star className="h-5 w-5" />}
+              label="Event Features"
+              enabled={eventFeaturesEnabled}
+              onToggle={setEventFeaturesEnabled}
+            />
+
+            <FeatureToggle
+              icon={<Video className="h-5 w-5" />}
+              label="YouTube Video"
+              enabled={youtubeVideoEnabled}
+              onToggle={setYoutubeVideoEnabled}
+            />
+
+            <FeatureToggle
+              icon={<ImageIcon className="h-5 w-5" />}
+              label="Image Gallery"
+              enabled={imageGalleryEnabled}
+              onToggle={setImageGalleryEnabled}
+            />
+          </div>
+
+          {/* Page Settings */}
+          <div className="mb-8 bg-zinc-900 rounded-lg p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <Settings className="h-5 w-5" />
+              <span className="text-white font-semibold">Page Settings</span>
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-zinc-800 rounded-lg">
+                <div className="flex items-center gap-2">
+                  <Label className="text-white">Show on Explore</Label>
+                  <span className="text-zinc-500 text-xs">(i)</span>
+                </div>
+                <Switch checked={showOnExplore} onCheckedChange={setShowOnExplore} />
+              </div>
+
+              <div className="flex items-center justify-between p-4 bg-zinc-800 rounded-lg">
+                <div className="flex items-center gap-2">
+                  <Label className="text-white">Password Protected Event</Label>
+                  <span className="text-zinc-500 text-xs">(i)</span>
+                </div>
+                <Switch checked={isPasswordProtected} onCheckedChange={setIsPasswordProtected} />
+              </div>
+
+              {isPasswordProtected && (
+                <div className="pl-4">
+                  <Input
+                    type="password"
+                    value={eventPassword}
+                    onChange={(e) => setEventPassword(e.target.value)}
+                    className="bg-zinc-800 border-zinc-700"
+                    placeholder="Enter event password"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Save Button */}
+          <div className="flex justify-center gap-4 mt-8">
             <Button
-              variant="ghost"
-              onClick={handleAddTicket}
-              className="w-full justify-center text-white hover:bg-zinc-800 py-8 rounded-md border-2 border-dashed border-zinc-700"
+              onClick={handleSaveEvent}
+              disabled={isSaving}
+              className="bg-white text-black hover:bg-zinc-200 px-12 py-6 rounded-full text-lg font-semibold"
             >
-              <Plus className="h-5 w-5" />
+              {isSaving ? 'Creating Event...' : 'Create Event'}
             </Button>
           </div>
-        </div>
-
-        {/* Additional Features */}
-        <div className="space-y-4 mb-8">
-          <FeatureToggle
-            icon={<Users className="h-5 w-5" />}
-            label="Guestlist"
-            enabled={guestlistEnabled}
-            onToggle={setGuestlistEnabled}
-          />
-
-          <FeatureToggle
-            icon={<Star className="h-5 w-5" />}
-            label="Event Features"
-            enabled={eventFeaturesEnabled}
-            onToggle={setEventFeaturesEnabled}
-          />
-
-          <FeatureToggle
-            icon={<Video className="h-5 w-5" />}
-            label="YouTube Video"
-            enabled={youtubeVideoEnabled}
-            onToggle={setYoutubeVideoEnabled}
-          />
-
-          <FeatureToggle
-            icon={<ImageIcon className="h-5 w-5" />}
-            label="Image Gallery"
-            enabled={imageGalleryEnabled}
-            onToggle={setImageGalleryEnabled}
-          />
-        </div>
-
-        {/* Page Settings */}
-        <div className="mb-8 bg-zinc-900 rounded-lg p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <Settings className="h-5 w-5" />
-            <span className="text-white font-semibold">Page Settings</span>
-          </div>
-
-          <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 bg-zinc-800 rounded-lg">
-              <div className="flex items-center gap-2">
-                <Label className="text-white">Show on Explore</Label>
-                <span className="text-zinc-500 text-xs">(i)</span>
-              </div>
-              <Switch checked={showOnExplore} onCheckedChange={setShowOnExplore} />
-            </div>
-
-            <div className="flex items-center justify-between p-4 bg-zinc-800 rounded-lg">
-              <div className="flex items-center gap-2">
-                <Label className="text-white">Password Protected Event</Label>
-                <span className="text-zinc-500 text-xs">(i)</span>
-              </div>
-              <Switch checked={isPasswordProtected} onCheckedChange={setIsPasswordProtected} />
-            </div>
-
-            {isPasswordProtected && (
-              <div className="pl-4">
-                <Input
-                  type="password"
-                  value={eventPassword}
-                  onChange={(e) => setEventPassword(e.target.value)}
-                  className="bg-zinc-800 border-zinc-700"
-                  placeholder="Enter event password"
-                />
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Save Button */}
-        <div className="flex justify-center gap-4 mt-8">
-          <Button
-            onClick={handleSaveEvent}
-            disabled={isSaving}
-            className="bg-white text-black hover:bg-zinc-200 px-12 py-6 rounded-full text-lg font-semibold"
-          >
-            {isSaving ? 'Creating Event...' : 'Create Event'}
-          </Button>
-        </div>
+        </section>
+        <aside className="col-span-4">
+          <h2 className="text-2xl font-bold">Event Details</h2>
+        </aside>
       </div>
 
       {/* Modals */}

@@ -1,10 +1,10 @@
 'use client';
-
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import { Button } from '@/components/ui/button';
 import { LogOut, User } from 'lucide-react';
 import NavButton from '@/components/buttons/NavButton';
+import Image from 'next/image';
 
 const Header = () => {
   const { data: session, status } = useSession();
@@ -12,9 +12,9 @@ const Header = () => {
   return (
     <nav className="fixed inset-x-0 top-0 z-50 w-full px-6 py-4 mix-blend-difference">
       {/* border-b border-white/10 bg-black/80 backdrop-blur-lg */}
-      <div className="mx-auto flex max-w-7xl items-center justify-between">
+      <div className="mx-auto flex items-center justify-between">
         <Link href="/" className="text-xl font-bold text-white">
-          Event Stack
+          <Image src="/logo/small/logo.png" alt="Event Stack" width={40} height={40} />
         </Link>
 
         <div className="flex items-center gap-1">
@@ -34,7 +34,7 @@ const Header = () => {
               </div>
               <Button
                 onClick={() => signOut({ callbackUrl: '/' })}
-                className="flex cursor-pointer items-center gap-2 bg-red-600 hover:bg-red-700"
+                className="cursor-pointer rounded-xl bg-white px-4 py-2 text-xs font-semibold text-black uppercase transition-transform hover:scale-105"
               >
                 <LogOut size={16} />
                 Sign Out

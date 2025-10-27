@@ -10,8 +10,7 @@ export default function VideoHero() {
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       />
-      <div className="absolute inset-0 bg-black/50" /> {/* Overlay to darken video */}
-      {/* Text Container with mix-blend-mode effect */}
+      <div className="absolute inset-0 bg-black/50" />
       <div className="relative flex h-full flex-col items-center justify-center px-4">
         <div className="mix-blend-difference">
           <h1 className="mb-4 text-center text-5xl font-bold text-white sm:text-6xl md:text-7xl">

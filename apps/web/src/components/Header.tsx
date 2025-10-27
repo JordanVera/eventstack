@@ -4,26 +4,25 @@ import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import { Button } from '@/components/ui/button';
 import { LogOut, User } from 'lucide-react';
+import NavButton from '@/components/buttons/NavButton';
 
 const Header = () => {
   const { data: session, status } = useSession();
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/80 px-6 py-4 text-white backdrop-blur-lg">
+    <nav className="fixed inset-x-0 top-0 z-50 w-full px-6 py-4 text-white">
+      {/* border-b border-white/10 bg-black/80 backdrop-blur-lg */}
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         <div className="flex items-center gap-6">
           <Link href="/" className="text-xl font-bold hover:text-gray-300">
             Event Stack
           </Link>
-          <Link href="/" className="hover:text-gray-300">
-            Home
-          </Link>
-          <Link href="/events/create" className="hover:text-gray-300">
-            Create Event
-          </Link>
-          <Link href="/events" className="hover:text-gray-300">
-            Browse Events
-          </Link>
+        </div>
+        <div className="flex items-center gap-6">
+          <NavButton href="/events/create" text="Create Event" />
+          <NavButton href="/events" text="Browse Events" />
+          <NavButton href="/about" text="About Us" />
+          <NavButton href="/" text="Get The App" />
         </div>
         <div className="flex items-center gap-3">
           {status === 'loading' ? (

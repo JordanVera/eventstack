@@ -1,6 +1,3 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-
 export default function VideoHero() {
   return (
     <div className="relative h-[85vh] w-screen overflow-hidden sm:h-[80vh]">
@@ -12,7 +9,6 @@ export default function VideoHero() {
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       />
-      <div className="absolute inset-0 bg-black/50" />
       <div className="relative flex h-full flex-col items-center justify-center px-4">
         <h1 className="mb-4 text-center text-5xl font-bold text-white mix-blend-difference sm:text-6xl md:text-8xl">
           create & discover events

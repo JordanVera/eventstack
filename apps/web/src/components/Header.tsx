@@ -41,14 +41,7 @@ const Header = () => {
               </Button>
             </>
           ) : (
-            <>
-              <Link href="/login">
-                <Button className="cursor-pointer bg-blue-600">Login</Button>
-              </Link>
-              <Link href="/signup">
-                <Button className="cursor-pointer bg-zinc-700">Sign Up</Button>
-              </Link>
-            </>
+            <NavButton href="/login" text="Login" />
           )}
         </div>
       </div>

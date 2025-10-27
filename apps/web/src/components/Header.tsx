@@ -10,11 +10,11 @@ const Header = () => {
   const { data: session, status } = useSession();
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 w-full px-6 py-4 mix-blend-difference">
+    <nav className="fixed inset-x-0 top-0 z-50 w-full px-6 py-2 mix-blend-difference">
       {/* border-b border-white/10 bg-black/80 backdrop-blur-lg */}
       <div className="mx-auto flex items-center justify-between">
         <Link href="/" className="text-xl font-bold text-white">
-          <Image src="/logo/small/logo.png" alt="Event Stack" width={40} height={40} />
+          <Image src="/logo/small/logo-white.png" alt="Event Stack" width={40} height={40} />
         </Link>
 
         <div className="flex items-center gap-1">

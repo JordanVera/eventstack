@@ -126,3 +126,14 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Text selection highlight */
+::selection {
+  background-color: #ec4899; /* pink-500 */
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #ec4899; /* pink-500 */
+  color: white;
+}

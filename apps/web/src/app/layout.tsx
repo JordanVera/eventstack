@@ -9,7 +9,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-black text-white">
         <SessionProvider>
           <TRPCProvider>
-            <Header />
+            {/* <Header /> */}
             <main className="mx-auto">{children}</main>
           </TRPCProvider>
         </SessionProvider>

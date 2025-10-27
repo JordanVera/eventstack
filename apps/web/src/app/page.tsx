@@ -6,52 +6,14 @@ import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Lock } from 'lucide-react';
-
-import '@/styles/global.css';
+import VideoHero from '@/components/heroes/VideoHero';
 
 export default function Web() {
   const { data: session, status } = useSession();
 
   return (
     <div className="min-h-screen w-full">
-      {/* Hero Video Section */}
-      <div className="relative h-screen w-full overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute top-0 left-0 h-full w-full object-cover"
-          src="/hero.mp4"
-        />
-        <div className="absolute inset-0 bg-black/50" /> {/* Overlay to darken video */}
-        {/* Text Container with mix-blend-mode effect */}
-        <div className="relative flex h-full flex-col items-center justify-center px-4">
-          <div className="mix-blend-difference">
-            <h1 className="mb-4 text-center text-7xl font-bold text-white">
-              create & discover events
-            </h1>
-            <p className="mb-8 text-center text-xl text-white">
-              Full-stack event management platform for creating unforgettable experiences
-            </p>
-          </div>
-
-          {/* Navigation Buttons */}
-          <div className="mt-8 flex gap-4">
-            <Link href="/events/create">
-              <Button className="bg-white px-8 py-6 text-lg font-semibold text-black hover:bg-white/90">
-                CREATE EVENT
-              </Button>
-            </Link>
-            <Link href="/events">
-              <Button className="border-2 border-white bg-transparent px-8 py-6 text-lg font-semibold text-white hover:bg-white/10">
-                EXPLORE
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
-
+      <VideoHero />
       {/* Main Content Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="mb-16 text-center">

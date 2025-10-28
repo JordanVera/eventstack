@@ -10,7 +10,7 @@ export default function VideoHero() {
         allowFullScreen
       />
       <div className="relative flex h-full flex-col items-center justify-center px-4">
-        <h1 className="mb-4 text-center text-5xl font-bold text-white mix-blend-difference sm:text-6xl md:text-8xl">
+        <h1 className="tracking-heading mb-4 text-center text-5xl font-semibold text-white mix-blend-difference sm:text-6xl md:text-8xl">
           create & discover events
         </h1>
       </div>

@@ -28,10 +28,6 @@ const Header = () => {
             <div className="text-gray-400">Loading...</div>
           ) : session ? (
             <>
-              <div className="flex items-center gap-2 text-gray-300">
-                <User size={18} />
-                <span className="text-sm">{session.user?.name || session.user?.email}</span>
-              </div>
               <Button
                 onClick={() => signOut({ callbackUrl: '/' })}
                 className="cursor-pointer rounded-xl bg-white px-4 py-2 text-xs font-semibold text-black uppercase transition-transform hover:scale-105"

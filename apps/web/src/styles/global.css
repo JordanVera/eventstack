@@ -16,6 +16,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-poppins), "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
+@utility tracking-heading {
+  letter-spacing: -0.08em;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -141,4 +145,32 @@ h1, h2, h3, h4, h5, h6 {
 ::-moz-selection {
   background-color: #ec4899; /* pink-500 */
   color: white;
+}
+
+/* Custom animations for hero section */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
 }

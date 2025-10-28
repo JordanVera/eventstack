@@ -1,6 +1,7 @@
 import React from 'react';
 import { appRouter } from '@/lib/routers';
 import EventCard from '@/components/cards/EventCard';
+import EventsHero from '@/components/heroes/EventsHero';
 
 const EventsPage = async () => {
   // Create a server-side caller for tRPC
@@ -11,9 +12,13 @@ const EventsPage = async () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="w-full px-4 py-6">
+      {/* Hero Section */}
+      <EventsHero />
+
+      {/* Events Grid */}
+      <div className="w-full px-4 py-12">
         {events && events.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5">
             {events.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}

@@ -40,8 +40,10 @@ const EventCard = ({ event }: { event: Event }) => {
 
         {/* Event Details */}
         <div className="flex-1 p-4">
-          <h2 className="mb-2 line-clamp-2 text-xl font-bold transition-colors">{event.title}</h2>
-          {event.venueName && <p className="text-sm text-gray-400">{event.venueName}</p>}
+          <h2 className="tracking-heading mb-2 line-clamp-2 text-3xl font-semibold transition-colors">
+            {event.title}
+          </h2>
+          {event.venueName && <p className="text-lg text-gray-400">{event.venueName}</p>}
           {event.location && !event.venueName && (
             <p className="line-clamp-1 text-sm text-gray-400">{event.location}</p>
           )}

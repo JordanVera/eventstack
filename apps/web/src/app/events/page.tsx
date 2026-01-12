@@ -18,7 +18,7 @@ const EventsPage = async () => {
       {/* Events Grid */}
       <div className="w-full px-4 py-12">
         {events && events.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
             {events.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}

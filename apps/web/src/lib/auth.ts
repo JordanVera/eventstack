@@ -1,11 +1,10 @@
 import NextAuth from 'next-auth';
-import { PrismaAdapter } from '@auth/prisma-adapter';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { prisma } from '@repo/database';
 import bcrypt from 'bcryptjs';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  adapter: PrismaAdapter(prisma),
+  // No adapter needed when using JWT strategy
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: 'jwt',

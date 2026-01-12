@@ -11,7 +11,7 @@ const EventCard = ({ event }: { event: Event }) => {
       href={`/events/${event.id}`}
       className="block h-full w-full cursor-pointer"
     >
-      <div className="flex h-full w-full flex-col overflow-hidden rounded-lg border border-zinc-800 transition-transform duration-300 hover:border-white">
+      <div className="flex h-full w-full flex-col overflow-hidden rounded-3xl border border-zinc-800 transition-transform duration-300 hover:border-white">
         {/* Event Flyer Image */}
         <div className="relative aspect-square w-full">
           {event.flyerImageUrl ? (

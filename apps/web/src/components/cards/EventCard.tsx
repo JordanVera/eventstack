@@ -19,6 +19,8 @@ const EventCard = ({ event }: { event: Event }) => {
             style={{
               backgroundImage:
                 'linear-gradient(to right, rgba(99, 102, 241, 0.9), rgba(139, 92, 246, 0.9), rgba(236, 72, 153, 0.9), rgba(249, 115, 22, 0.9), rgba(59, 130, 246, 0.9), rgba(99, 102, 241, 0.9))',
+              boxShadow:
+                '0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(236, 72, 153, 0.3), 0 0 60px rgba(59, 130, 246, 0.2)',
             }}
           ></div>
         </div>
